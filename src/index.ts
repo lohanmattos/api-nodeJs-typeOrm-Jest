@@ -1,10 +1,16 @@
-import Express, { Request, Response } from "express";
+import express, { Request, Response }  from "express";
 import routeUser from "./routes";
-const server = Express();
+import "reflect-metadata";
+import  createConnection  from "./database";
+
+createConnection();
+const server = express();
+
 
 const host = "http://localhost";
-const port =  5000;
+const port =  3000;
 
+server.use(express.json());
 
 //Routa da Status
 server.get("/", (req: Request, res: Response) => {
