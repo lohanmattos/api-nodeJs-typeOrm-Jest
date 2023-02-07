@@ -9,22 +9,22 @@ interface Iuser{
 
 
 class CreateUserService{
-    async execute({id, username, email}: Iuser){
+    async execute(user: Iuser){
       
-        const user = await getRepository(Users)
+        const userCreated = await getRepository(Users)
             .createQueryBuilder()
             .insert()
             .into(Users)
             .values([
                 {   
-                    id: id,
-                    nome: username,
-                    email: email
+                    id: user.id,
+                    nome: user.username,
+                    email: user.email
                 }
             ])
             .execute();
-
-        return user;
+        
+        return userCreated.identifiers[0];
     }
 
 }
