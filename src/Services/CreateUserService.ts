@@ -23,7 +23,7 @@ class CreateUserService{
                 }
             ])
             .execute();
-        
+        console.log(userCreated.identifiers[0])
         return userCreated.identifiers[0];
     }
 
